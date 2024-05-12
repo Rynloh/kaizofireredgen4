@@ -89,22 +89,22 @@ static void TurnValuesCleanUp(bool8 var0);
 static void SpecialStatusesClear(void);
 static void BattleIntroPrepareBackgroundSlide(void);
 static void BattleIntroDrawTrainersOrMonsSprites(void);
-static void BattleIntroDrawPartySummaryScreens(void);
+void BattleIntroDrawPartySummaryScreens(void);
 static void BattleIntroPrintTrainerWantsToBattle(void);
 static void BattleIntroPrintWildMonAttacked(void);
 static void BattleIntroPrintOpponentSendsOut(void);
 static void BattleIntroPrintPlayerSendsOut(void);
-static void BattleIntroRecordMonsToDex(void);
+void BattleIntroRecordMonsToDex(void);
 static void BattleIntroOpponentSendsOutMonAnimation(void);
 static void BattleIntroPlayerSendsOutMonAnimation(void);
 static void TryDoEventsBeforeFirstTurn(void);
-static void HandleTurnActionSelectionState(void);
+void HandleTurnActionSelectionState(void);
 static void RunTurnActionsFunctions(void);
 static void SetActionsAndBattlersTurnOrder(void);
 static void CheckFocusPunch_ClearVarsBeforeTurnStarts(void);
 static void HandleEndTurn_FinishBattle(void);
 static void FreeResetData_ReturnToOvOrDoEvolutions(void);
-static void ReturnFromBattleToOverworld(void);
+void ReturnFromBattleToOverworld(void);
 static void TryEvolvePokemon(void);
 static void WaitForEvoSceneToFinish(void);
 
@@ -2639,7 +2639,7 @@ static void BattleIntroDrawTrainersOrMonsSprites(void)
     gBattleMainFunc = BattleIntroDrawPartySummaryScreens;
 }
 
-static void BattleIntroDrawPartySummaryScreens(void)
+void BattleIntroDrawPartySummaryScreens(void)
 {
     s32 i;
     struct HpAndStatus hpStatus[PARTY_SIZE];
@@ -2766,7 +2766,7 @@ static void BattleIntroOpponentSendsOutMonAnimation(void)
     }
 }
 
-static void BattleIntroRecordMonsToDex(void)
+void BattleIntroRecordMonsToDex(void)
 {
     if (gBattleControllerExecFlags == 0)
     {
@@ -3090,7 +3090,7 @@ enum
     STATE_WAIT_SET_BEFORE_ACTION,
 };
 
-static void HandleTurnActionSelectionState(void)
+void HandleTurnActionSelectionState(void)
 {
     s32 i;
 
@@ -3908,7 +3908,7 @@ static void WaitForEvoSceneToFinish(void)
         gBattleMainFunc = TryEvolvePokemon;
 }
 
-static void ReturnFromBattleToOverworld(void)
+void ReturnFromBattleToOverworld(void)
 {
     if (!(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {
