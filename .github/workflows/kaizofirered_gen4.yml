@@ -1,0 +1,9 @@
+name: Build KaizoFireRed-Gen4
+
+on:
+    push: 
+        branches: [ kaizofirered_gen4 ]
+
+jobs:
+    build:
+        uses: ./.github/workflows/build.yml
