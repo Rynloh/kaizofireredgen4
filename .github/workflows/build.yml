@@ -2,6 +2,10 @@ name: CI
 
 on:
   workflow_call:
+    inputs:
+      symbols_branch:
+        required: true
+        type: string
 
 jobs:
   jar:
@@ -27,7 +31,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: 'symbols'
-          ref: 'symbols'
+          ref: ${{ inputs.symbols_branch }}
 
       - name: Install binutils
         run: sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi libcapstone-dev
@@ -54,7 +58,7 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         uses: EndBug/add-and-commit@v7
         with:
-          branch: symbols
+          branch: ${{ inputs.symbols_branch }}
           cwd: "./symbols"
           add: "*.sym"
           message: ${{ env.SYMBOLS_COMMIT_MSG }}
